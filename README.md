@@ -19,4 +19,4 @@ Generative Adverserial Networks, or GAN in short, is ideal for generating new da
 
 ![Generator](Assets/generator.png)
 
-The generator is a typical generator with the encoder being a few layers of convolutional filter and the decoder being layers of transpose convolutional filter. The input of the generator is the output of the previour iteration, this way, the model can generate continuous music of any length, hence the "Recursive" in the name. 
+The generator is a typical generator with the encoder being a few layers of convolutional filter and the decoder being layers of transpose convolutional filter. The input of the generator is the output of the previour iteration, this way, the model can generate continuous music of any duration, hence the "Recursive" in the name. What is unique about the model is the filter shapes. 3x15 and 15x3 are long strips place horizontally or vertially. The intention is to capture the key duration in horizontal filter, and capture the chord composition in the vertical filter, this way, instead of packing everything into a square filter, we can dedicate each layer to a specific job, makeing the model easier to train and debug. 
