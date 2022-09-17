@@ -36,8 +36,8 @@ The chord extractor, like its name suggests, extracts 10 common classical music 
 The model uses binary cross entropy as the loss for both generator and discriminator, and Adam as the loss function. The training set was about 60 pieces from Bach. The model was trained for 10000 epochs, for about 6 hours on a GTX 1080. 
 
 Here are the final generated musics.
-![Music1]("Generated Music/music1.mp3)
-![Music2]("Generated Music/music2.mp3)
+![Music1](GeneratedMusic/music1.mp3)
+![Music2](GeneratedMusic/music2.mp3)
 
 ## Acknowledgement
 This is a class group project where each of our team member took a different approach to classical music generation (RNN, Transformer, etc.) and I mainly worked on the CNN approach. I want to thank my teammates for the suggestions and supports throughout the project, and thank our course superviser Dr. Ipek Oguz for advices. 
