@@ -20,3 +20,25 @@ Generative Adverserial Networks, or GAN in short, is ideal for generating new da
 ![Generator](Assets/generator.png)
 
 The generator is a typical generator with the encoder being a few layers of convolutional filter and the decoder being layers of transpose convolutional filter. The input of the generator is the output of the previour iteration, this way, the model can generate continuous music of any duration, hence the "Recursive" in the name. What is unique about the model is the filter shapes. 3x15 and 15x3 are long strips place horizontally or vertially. The intention is to capture the key duration in horizontal filter, and capture the chord composition in the vertical filter, this way, instead of packing everything into a square filter, we can dedicate each layer to a specific job, makeing the model easier to train and debug. 
+
+### Discriminator
+
+![Discriminator](Assets/discriminator.png)
+
+The discriminator in this model has two substructures. The first one is the typical discriminator, with a few layers of CNN and dense layers to form a final prediction of whether the input data is real or fake. There the discriminator takes both the current and the previous layer as input. This way, it can also examine whether the flow is continuous and that it as a metric for evaluating the realness of the inputted music. The second substructure is called a chord extractor. 
+
+### Chord Extractor
+![Chord Extractor](Assets/chordextractor.png)
+
+The chord extractor, like its name suggests, extracts 10 common classical music chords and store their frequency and time of occurrence in an array, which is appended to the final dense layer input as an additional information in judging the realness of the music. This also allows mimicing certain styles. For example, if we train the model using composers who is known for using certain chords, the generted result will also mimic that chord composition since the discriminator will rate music without these chords as fake. 
+
+## Training and Result
+The model uses binary cross entropy as the loss for both generator and discriminator, and Adam as the loss function. The training set was about 60 pieces from Bach. The model was trained for 10000 epochs, for about 6 hours on a GTX 1080. 
+
+Here are the final generated musics.
+![Music1]("Generated Music/music1.mp3)
+![Music2]("Generated Music/music2.mp3)
+
+## Acknowledgement
+This is a class group project where each of our team member took a different approach to classical music generation (RNN, Transformer, etc.) and I mainly worked on the CNN approach. I want to thank my teammates for the suggestions and supports throughout the project, and thank our course superviser Dr. Ipek Oguz for advices. 
+
